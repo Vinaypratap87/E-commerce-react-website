@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { items } from './Data' 
 
 
-const Navbar = ({ setData }) => {
+const Navbar = ({ setData,cart }) => {
 
   const navigate = useNavigate()
 
@@ -42,7 +42,13 @@ const Navbar = ({ setData }) => {
             />
           </form>
 
-          <Link to={'/cart'} className="cart"> cart</Link>
+          <Link to={'/cart'} className="cart"> <button type="button" className="btn btn-primary position-relative">
+  Cart
+  <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    {cart.length}
+    <span className="visually-hidden">unread messages</span>
+  </span>
+</button></Link>
         </div>
 
         <div className="nav-bar-wrapper">
@@ -58,7 +64,7 @@ const Navbar = ({ setData }) => {
           <div onClick={() => filterByCategory('tablets')}
             className="items">tablets</div>
           <div onClick={() => filterByPrice(29999)} className="items">{">="}29999</div>
-          <div onClick={() => filterByPrice(49999)} className="items">{">="}49999</div>
+          <div onClick={() => filterByPrice(49999)} className = "items">{">="}49999</div>
           <div onClick={() => filterByPrice(69999)} className="items">{">="}69999</div>
           <div onClick={() => filterByPrice(89999)} className="items">{">="}89999</div>
 
