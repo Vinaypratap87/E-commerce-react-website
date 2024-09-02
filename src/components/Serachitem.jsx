@@ -1,11 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { items } from './Data';
+import Product from './Product';
 
-const Serachitem = () => {
+const SearchItem = ({cart, setCart}) => {
+
+  const {term} = useParams();
+  const [filterData, setFilterData] = useState([]);
+
+  useEffect(() => {
+    const filteredData = () =>{
+      const data = items.filter((p)=>p.title.toLowerCase().includes(term.toLowerCase()));
+     
+      setFilterData(data)
+    }
+
+    filteredData();
+    
+  }, [term])
+  
+
+
   return (
-    <div>
-      
-    </div>
+   <Product items={filterData} />
   )
 }
 
-export default Serachitem
+export default SearchItem
