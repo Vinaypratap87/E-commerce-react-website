@@ -22,7 +22,7 @@ const SearchItem = ({cart, setCart}) => {
 
 
   return (
-   <Product items={filterData} />
+   <Product cart={cart} setCart={setCart} items={filterData} />
   )
 }
 
